@@ -104,14 +104,12 @@ public class Noiz extends JPanel implements MouseMotionListener {
     paint(g);
   }
 
-
-  public boolean handleEvent(Event event) {
+  @Override
+  public void mouseMoved(MouseEvent event) {
     if ( gameManager!=null
-     && event.target==screenPanel && event.id==event.MOUSE_MOVE ) {
-      gameManager.setMousePos(event.x, event.y);
-      return true;
+     && event.getSource() == screenPanel && event.getID() == MouseEvent.MOUSE_MOVED) {
+      gameManager.setMousePos(event.getX(), event.getY());
     }
-    return false;
   }
 
   private final int NAME_PANEL_HEIGHT = 32;
