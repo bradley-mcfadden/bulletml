@@ -6,9 +6,10 @@
 package jp.gr.java_conf.abagames.bulletml_demo.noiz;
 
 import jp.gr.java_conf.abagames.bulletml_demo.BulletmlUtil;
-import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import java.io.*;
 
 /**
@@ -16,7 +17,7 @@ import java.io.*;
  *
  * @version $Revision: 1.5 $
  */
-public class Noiz extends Applet {
+public class Noiz extends JPanel implements MouseMotionListener {
 
   private Screen screen;
   private GameManager gameManager;
@@ -239,8 +240,8 @@ public class Noiz extends Applet {
 
   public static void main(String[] args) {
     Noiz noiz = new Noiz();
-    Frame frame;
-    frame = new Frame() {
+    JFrame frame;
+    frame = new JFrame() {
       protected void processWindowEvent(WindowEvent e) {
         super.processWindowEvent(e);
         if (e.getID() == WindowEvent.WINDOW_CLOSING) {
@@ -255,7 +256,6 @@ public class Noiz extends Applet {
     frame.setTitle("BulletML Demo");
     frame.add(noiz, BorderLayout.CENTER);
     noiz.init();
-    noiz.start();
     frame.setSize(640, 640);
     Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
     frame.setLocation((d.width - frame.getSize().width) / 2, (d.height - frame.getSize().height) / 2);
