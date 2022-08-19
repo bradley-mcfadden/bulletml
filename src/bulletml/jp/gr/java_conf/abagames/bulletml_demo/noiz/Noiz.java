@@ -8,6 +8,7 @@ package jp.gr.java_conf.abagames.bulletml_demo.noiz;
 import jp.gr.java_conf.abagames.bulletml_demo.BulletmlUtil;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.io.*;
@@ -148,6 +149,7 @@ public class Noiz extends JPanel implements MouseMotionListener {
     consoleName.setText("Console");
     csPanel.setLayout(borderLayout3);
     screenPanel.setLayout(null);
+    screenPanel.setCursor(getBlankCursor());
     ssPanel.setLayout(gridLayout3);
     gridLayout3.setRows(2);
     gridLayout3.setColumns(1);
@@ -201,6 +203,17 @@ public class Noiz extends JPanel implements MouseMotionListener {
     docPanel.add(documentArea, BorderLayout.CENTER);
     dsPanel.add(samplePanel, BorderLayout.NORTH);
     samplePanel.add(sampleChoice, BorderLayout.CENTER);
+  }
+
+  private Cursor getBlankCursor() {
+    // Transparent 16 x 16 pixel cursor image.
+    BufferedImage cursorImg = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
+
+    // Create a new blank cursor.
+    Cursor blankCursor = Toolkit.getDefaultToolkit().createCustomCursor(
+        cursorImg, new Point(0, 0), "blank cursor");
+
+    return blankCursor;
   }
 
   private boolean startStopFlag = true;
