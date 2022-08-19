@@ -113,6 +113,11 @@ public class Noiz extends JPanel implements MouseMotionListener {
     }
   }
 
+  @Override
+  public void mouseDragged(MouseEvent ignored) {
+    // do nothing 
+  }
+
   private final int NAME_PANEL_HEIGHT = 32;
   Panel ssPanel = new Panel();
   Panel dsPanel = new Panel();
@@ -149,6 +154,7 @@ public class Noiz extends JPanel implements MouseMotionListener {
     consoleName.setText("Console");
     csPanel.setLayout(borderLayout3);
     screenPanel.setLayout(null);
+    screenPanel.addMouseMotionListener(this);
     screenPanel.setCursor(getBlankCursor());
     ssPanel.setLayout(gridLayout3);
     gridLayout3.setRows(2);
